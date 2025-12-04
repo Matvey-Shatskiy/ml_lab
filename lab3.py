@@ -11,9 +11,9 @@ df_model = df.drop(['PassengerId', 'Name', 'Ticket'], axis=1)
 X_reg = df_model.drop('Age', axis=1)
 y_reg = df_model['Age']
 
-X_train_r, X_test_r, y_train_r, y_test_r = train_test_split(X_reg, y_reg, test_size=0.2, random_state=1)
+X_train_r, X_test_r, y_train_r, y_test_r = train_test_split(X_reg, y_reg, test_size=0.2, random_state=12)
 
-dt_reg = DecisionTreeRegressor(max_depth=3, random_state=1)
+dt_reg = DecisionTreeRegressor(max_depth=3, random_state=12)
 dt_reg.fit(X_train_r, y_train_r)
 
 y_pred_r = dt_reg.predict(X_test_r)
@@ -26,9 +26,9 @@ print(f"Средняя абсолютная ошибка (MAE): {mae:.4f}")
 X_cls = df_model.drop('Survived', axis=1)
 y_cls = df_model['Survived']
 
-X_train_c, X_test_c, y_train_c, y_test_c = train_test_split(X_cls, y_cls, test_size=0.2, random_state=1)
+X_train_c, X_test_c, y_train_c, y_test_c = train_test_split(X_cls, y_cls, test_size=0.2, random_state=12)
 
-dt_cls = DecisionTreeClassifier(max_depth=4, criterion='gini', random_state=1)
+dt_cls = DecisionTreeClassifier(max_depth=4, criterion='gini', random_state=12)
 dt_cls.fit(X_train_c, y_train_c)
 
 y_probs = dt_cls.predict_proba(X_test_c)[:, 1]
